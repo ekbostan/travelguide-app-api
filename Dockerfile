@@ -1,5 +1,5 @@
 FROM python:3.9-alpine3.13
-LABEL maintainer="ekbostan"
+LABEL maintainer="ekbostan.com"
 
 ENV PYTHONUNBUFFERED 1
 
@@ -20,6 +20,7 @@ RUN python -m venv /py && \
         then /py/bin/pip install -r /tmp/requirements.dev.txt ; \
     fi && \
     rm -rf /tmp && \
+    apk del .tmp-build-deps && \
     adduser \
         --disabled-password \
         --no-create-home \
